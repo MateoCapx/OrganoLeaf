@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+const router = require('express').Router();
+const apiRoutes = require('./api');
+
+router.use('/api', apiRoutes);
+
+router.use((req, res) => {
+  res.send(`
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +31,7 @@
         <div class="row">
             <div class="col-sm">
                 <form>
-                    <form class="inputForm" action="https://script.google.com/macros/s/AKfycbwFmiutCdX2H4lwAaojIYm73RYbJ8xDbNC5zzECHws/dev" method="POST"> 
+                    <form class="inputForm"> 
                         <label for="Name">Name:</label><br>
                         <input type="text" id="fname" name="Name" required><br><br>
 
@@ -48,7 +55,7 @@
                         <br>
                         <br>
                                                 
-                        <button id="submitBtn" type="submit">Send</button>
+                        <button type="submit">Send</button>
                         <input type="reset">
                       </form>
   
@@ -66,4 +73,12 @@
 </html>
 
 
-<!-- action=" " method="POST" -->
+  
+  
+  
+  
+  
+  `)
+});
+ 
+module.exports = router;
