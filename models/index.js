@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
+// Where is Model coming from? ||||
+
 const sequelize = require('../config/connection.js');
 
 class CustomerForm extends Model {}
@@ -24,21 +26,21 @@ CustomerForm.init(
             isInt: true,   
             }
       },
-      email: {
+      Email: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
         isEmail: true,
         }
       },
-      birthday: {
+      Birthday: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
             isDate: true,   
             }
       },
-      employees: {
+      Employee: {
         type: DataTypes.STRING,
         allowNull: false,
       },
