@@ -19,28 +19,22 @@ CustomerForm.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-      Phone: {
-        type: DataTypes.INTEGER,
+      phone: {
+        type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-            isInt: true,   
-            }
       },
-      Email: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-        isEmail: true,
+         isEmail: true,
         }
       },
-      Birthday: {
-        type: DataTypes.INTEGER,
+      birthday: {
+        type: DataTypes.DATE,
         allowNull: false,
-        validate: {
-            isDate: true,   
-            }
       },
-      Employee: {
+      employee: {
         type: DataTypes.STRING,
         allowNull: false,
       },

@@ -23,6 +23,6 @@ const customerData = [
   },
 ];
 
-const seedProducts = () => CustomerForm.bulkCreate(ustomerData);
+const seedProducts = () => CustomerForm.bulkCreate(customerData);
 
 module.exports = customerData;
