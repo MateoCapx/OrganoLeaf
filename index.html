@@ -23,25 +23,25 @@
         <br>
         <div class="row">
             <div class="col-sm">
-                <form id="inputForm" action="test.html" method="post">
-                    <label for="Name">Name:</label><br>
-                    <input type="text" id="fname" name="Name" required><br><br>
+                <form id="inputForm" action="https://sheetdb.io/api/v1/lodkomypbxz1h" method="post" id="sheetdb-form">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="fname" name="data[name]" required><br><br>
 
-                    <label for="Phone">Phone:</label><br>
-                    <input type="tel" id="phoneID" name="Phone" required><br><br>
+                    <label for="phone">Phone:</label><br>
+                    <input type="tel" id="phoneID" name="data[phone]" required><br><br>
 
-                    <label for="Email">Email:</label><br>
-                    <input type="email" id="emailID" name="Email" required><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="emailID" name="data[email]" required><br><br>
 
-                    <label for="Birthday">Birthday:</label><br>
-                    <input type="date" id="birthdayID" name="Birthday"><br><br>
+                    <label for="birthday">Birthday:</label><br>
+                    <input type="date" id="birthdayID" name="data[birthday]"><br><br>
 
-                    <label for="Employee">Select Employee:</label>
-                    <select id="employee" name="employees">
-                        <option value="Employee_1">Employee 1 </option>
-                        <option value="Employee_2">Employee 2</option>
-                        <option value="Employee_3">Employee 3</option>
-                        <option value="Employee_4">Employee 4</option>
+                    <label for="employee">Select Employee:</label>
+                    <select id="employee" name="data[employee]">
+                        <option value="employee_1" name="data[employee_1]" >Employee 1 </option>
+                        <option value="employee_2" name="data[employee_2]" >Employee 2</option>
+                        <option value="employee_3" name="data[employee_3]" >Employee 3</option>
+                        <option value="employee_4" name="data[employee_4]" >Employee 4</option>
                     </select>
 
                     <br>
@@ -60,43 +60,62 @@
 </body>
 
 <script>
-    let form = document.getElementById("inputForm")
-    let fname = document.getElementById("fname")
-    let phoneID = document.getElementById("phoneID")
-    let emailID = document.getElementById("emailID")
-    let birthdayID = document.getElementById("birthdayID")
-    let employee = document.getElementById("employee")
-    let submitBtn = document.getElementById("submitBtn")
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        // dataManagement()
+    // Save Data to MYSQL database Start
 
-        // Fetch Request - Looks for APIs
-        fetch("/api",{
-            method:'POST',
-            body:JSON.stringify({
-                name: fname.value,
-                phone: phoneID.value,
-                email: emailID.value,
-                birthday: birthdayID.value,
-                employee:employee.value
-            }),
-            headers:{
-                'Content-Type':"application/json"
-            }
-        }).then((response)=>{
-            console.log(response.json())
-        }).catch(err=>console.log(err))
-    })
+    // let form = document.getElementById("inputForm")
+    // let fname = document.getElementById("fname")
+    // let phoneID = document.getElementById("phoneID")
+    // let emailID = document.getElementById("emailID")
+    // let birthdayID = document.getElementById("birthdayID")
+    // let employee = document.getElementById("employee")
+    // let submitBtn = document.getElementById("submitBtn")
+    // form.addEventListener('submit', (e) => {
+    //     e.preventDefault()
+    //     // dataManagement()
+
+    //     // Fetch Request - Looks for APIs
+    //     fetch("/api",{
+    //         method:'POST',
+    //         body:JSON.stringify({
+    //             name: fname.value,
+    //             phone: phoneID.value,
+    //             email: emailID.value,
+    //             birthday: birthdayID.value,
+    //             employee:employee.value
+    //         }),
+    //         headers:{
+    //             'Content-Type':"application/json"
+    //         }
+    //     }).then((response)=>{
+    //         console.log(response.json())
+    //     }).catch(err=>console.log(err))
+    // })
 
 //  const formData = []
 //     function dataManagement() {
 //         formData.push(fname.value, phoneID.value, emailID.value, birthdayID.value, employee.value)
 //         console.log(formData)
 //     }
+ // Save Data to MYSQL database End
 
 
+//  Save Data to Google Spreadsheet Start 
 
+var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          fetch(form.action, {
+              method : "POST",
+              body: new FormData(document.getElementById("sheetdb-form")),
+          }).then(
+              response => response.json()
+          ).then((html) => {
+            window.open('page2.html', '_blank');
+
+          });
+        });
+
+        // Save Data to Google Spreadsheet End 
 
 
 
